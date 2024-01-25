@@ -4,8 +4,8 @@
 const setAccessCookie = (res, token) => {
   res.cookie("accessToken", token, {
     maxAge: 60 * 60 * 1000,
-    httpOnly: true,
-    //   secure: true, // for production
+    httpOnly: false,
+    secure: true, // for production
     // sameSite: "none", // for production
   });
 };
