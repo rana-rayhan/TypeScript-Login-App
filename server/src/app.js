@@ -6,11 +6,19 @@ const createError = require("http-errors");
 const { errorResponse } = require("./helpers/responseHelper");
 const userRouter = require("./routers/userRouters");
 const app = express();
+
+// path of build files for connect frontend and backend togather ---***
+const path = require("path");
+const _dirname = path.dirname("");
 //
 //
 // Middlewares ---***
-app.use(cors());
 app.use(express.json());
+// use express buildpath for start frontend in same PORT
+const buildPath = path.join(_dirname, "../client/build");
+//app.use(express.static(buildPath));
+//
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(cookie());
