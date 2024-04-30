@@ -1,11 +1,12 @@
 import axios from "axios";
 // export const baseUrl = "http://localhost:4000";
+export const baseUrl = process.env.REACT_APP_API_URL;
 //
 //
 // Find user with username ---***
 export const registerUser = async (user: object) => {
   try {
-    const res = await axios.post(`/api/user/register`, user);
+    const res = await axios.post(`${baseUrl}/api/user/register`, user);
     return res;
   } catch (error) {
     return (error as any)?.response;
@@ -16,7 +17,7 @@ export const registerUser = async (user: object) => {
 // Find user with username ---***
 export const isUserExist = async (username: string) => {
   try {
-    const res = await axios.post(`/api/user/verify-username`, {
+    const res = await axios.post(`${baseUrl}/api/user/verify-username`, {
       username,
     });
     return res;
@@ -29,7 +30,7 @@ export const isUserExist = async (username: string) => {
 // Find user with username ---***
 export const loginUser = async (username: string, password: string) => {
   try {
-    const res = await axios.post(`/api/user/login`, {
+    const res = await axios.post(`${baseUrl}/api/user/login`, {
       username,
       password,
     });
@@ -43,7 +44,10 @@ export const loginUser = async (username: string, password: string) => {
 // Find user with username ---***
 export const updateUser = async (user: object, userId: string) => {
   try {
-    const res = await axios.put(`/api/user/update-user/${userId}`, user);
+    const res = await axios.put(
+      `${baseUrl}/api/user/update-user/${userId}`,
+      user
+    );
     return res;
   } catch (error) {
     return (error as any)?.response;
@@ -54,7 +58,9 @@ export const updateUser = async (user: object, userId: string) => {
 // Find user with username ---***
 export const recoverPassword = async (username: string) => {
   try {
-    const res = await axios.post(`/api/user/forget-password`, { username });
+    const res = await axios.post(`${baseUrl}/api/user/forget-password`, {
+      username,
+    });
     return res;
   } catch (error) {
     return (error as any)?.response;
@@ -65,7 +71,7 @@ export const recoverPassword = async (username: string) => {
 // Find user with username ---***
 export const isValidOtp = async (otp: object) => {
   try {
-    const res = await axios.post(`/api/user/verify-token`, otp);
+    const res = await axios.post(`${baseUrl}/api/user/verify-token`, otp);
     return res;
   } catch (error) {
     return (error as any)?.response;
@@ -76,7 +82,7 @@ export const isValidOtp = async (otp: object) => {
 // Find user with username ---***
 export const resetPassword = async (resetPwd: object) => {
   try {
-    const res = await axios.put(`/api/user/reset-password`, resetPwd);
+    const res = await axios.put(`${baseUrl}/api/user/reset-password`, resetPwd);
     return res;
   } catch (error) {
     return (error as any)?.response;
@@ -87,7 +93,7 @@ export const resetPassword = async (resetPwd: object) => {
 // Find user with username ---***
 export const logoutUser = async () => {
   try {
-    const res = await axios.get(`/api/user/logout`);
+    const res = await axios.get(`${baseUrl}/api/user/logout`);
     return res;
   } catch (error) {
     return (error as any)?.response;

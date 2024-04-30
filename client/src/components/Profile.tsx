@@ -72,8 +72,10 @@ const Profile = () => {
       localStorage.removeItem("recovery");
       navigate("/");
     } else {
+      localStorage.removeItem("user");
+      localStorage.removeItem("recovery");
+      navigate("/");
       toast.error(data.message);
-      console.log(data);
     }
   };
 
@@ -184,7 +186,7 @@ const Profile = () => {
               <button
                 onClick={handleLogout}
                 className="text-blue-700 text-sm hover:text-red-500"
-                >
+              >
                 Logout
               </button>
             </span>

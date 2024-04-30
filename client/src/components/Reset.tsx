@@ -30,7 +30,6 @@ const Reset = () => {
         navigate("/password");
       } else {
         toast.error(data.message);
-        console.log(data);
       }
     } else {
       toast.error("Password not match...!");
